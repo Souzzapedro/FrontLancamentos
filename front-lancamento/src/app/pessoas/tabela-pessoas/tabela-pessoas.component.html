@@ -1,0 +1,51 @@
+<div class="container mt-3 table-responsive text-center">
+
+  <div class="text-start mb-2">
+    <h2>Pessoas</h2>
+
+
+      <div class="form-group">
+        <!-- <label for="nome" class="form-label m-0">Pesquisar</label> -->
+        <input autocomplete="off" type="text" class="form-control" id="nome" name="nome" placeholder="Pesquisar" [formControl]="formPesquisa">
+      </div>
+
+      <!-- <button class="btn btn-primary mt-2" (click)="pesquisar()">Pesquisar</button> -->
+  </div>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th class="text-center">Endereço</th>
+        <th class="text-center">Status</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let pessoa of pessoas">
+        <td class="col">{{ pessoa.id }}</td>
+        <td class="col">{{ pessoa.nome }}</td>
+        <td class="col">{{ pessoa.email }}</td>
+        <td class="text-center col" >
+          <button class="btn btn-primary">Detalhes</button>
+        </td>
+        <td class="text-{{ !pessoa.ativo ? 'danger' : 'success' }} fw-bold text-center col">{{ pessoa.ativo ? "Ativo" : "Inativo" }}</td>
+        <td class="d-flex justify-content-center">
+          <button [routerLink]="'/pessoas/'+pessoa.id+'/editar'" class="btn btn-primary mx-1" tooltip="Editar"><i class="bi bi-pencil-fill"></i></button>
+          <button (click)="atualizarStatus(pessoa.id, !pessoa.ativo, pessoa.nome)" class="btn btn-{{ pessoa.ativo ? 'danger' : 'success' }} btn-status-pessoa" tooltip="Atualizar status de {{ pessoa.nome }}">{{ pessoa.ativo ? "Desativar" : "Ativar"}}</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!pessoas">
+    <img style="width: 30px; height: 30px;" src="https://i.gifer.com/ZKZg.gif" alt="loading">
+  </div>
+
+  <button class="float-start btn btn-outline-success" routerLink="/pessoas/novo">Novo Pessoa</button>
+
+</div>

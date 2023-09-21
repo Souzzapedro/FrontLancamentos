@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>Nova Pessoa</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+      <div class="form-group col">
+        <label for="nome" class="form-label m-0" [ngClass]="aplicaCssErro('nome')">Nome</label>
+        <input type="text" class="form-control" id="nome" formControlName="nome" [ngClass]="aplicaCssErro('nome')">
+      </div>
+      <div class="form-group col">
+        <label for="email" class="form-label m-0" [ngClass]="aplicaCssErro('email')">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email" [ngClass]="aplicaCssErro('email')">
+      </div>
+    </div>
+
+    <div formGroupName="endereco">
+      <div class="row mt-2">
+        <div class="form-group col-8">
+          <label for="logradouro" class="form-label m-0" [ngClass]="aplicaCssErro('endereco.logradouro')">Logradouro</label>
+          <input type="text" class="form-control" id="logradouro" formControlName="logradouro" [ngClass]="aplicaCssErro('endereco.logradouro')">
+        </div>
+        <div class="form-group col">
+          <label for="numero" class="form-label m-0" [ngClass]="aplicaCssErro('endereco.numero')">Número</label>
+          <input type="text" class="form-control" id="numero" formControlName="numero" [ngClass]="aplicaCssErro('endereco.numero')">
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="form-group col">
+          <label for="complemento" class="form-label m-0" [ngClass]="aplicaCssErro('endereco.complemento')">Complemento</label>
+          <input type="text" class="form-control" id="complemento" formControlName="complemento" [ngClass]="aplicaCssErro('endereco.complemento')">
+        </div>
+        <div class="form-group col">
+          <label for="bairro" class="form-label m-0" [ngClass]="aplicaCssErro('endereco.bairro')">Bairro</label>
+          <input type="text" class="form-control" id="bairro" formControlName="bairro" [ngClass]="aplicaCssErro('endereco.bairro')">
+        </div>
+        <div class="form-group col">
+          <label for="cep" class="form-label m-0" [ngClass]="aplicaCssErro('endereco.cep')">CEP</label>
+          <input type="text" class="form-control" id="cep" formControlName="cep" [ngClass]="aplicaCssErro('endereco.cep')">
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="form-group col">
+          <label for="cidade" class="form-label m-0" [ngClass]="aplicaCssErro('endereco.cidade')">Cidade</label>
+          <input type="text" class="form-control" id="cidade" formControlName="cidade" [ngClass]="aplicaCssErro('endereco.cidade')">
+        </div>
+        <div class="form-group col">
+          <label for="estado" class="form-label m-0" [ngClass]="aplicaCssErro('endereco.estado')">Estado</label>
+          <input type="text" class="form-control" id="estado" formControlName="estado" [ngClass]="aplicaCssErro('endereco.estado')">
+        </div>
+      </div>
+    </div>
+
+    <div class="btns-form d-flex gap-2 mt-2">
+      <button *ngIf="isEditRoute" class="btn btn-primary">Salvar</button>
+      <button *ngIf="!isEditRoute" class="btn btn-info">Novo</button>
+      <button class="btn btn-link text-decoration-none" routerLink="/pessoas">Voltar para a pesquisa</button>
+    </div>
+
+  </form>
+</div>

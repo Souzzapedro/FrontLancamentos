@@ -1,0 +1,50 @@
+<div class="container mt-3 table-responsive text-center">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Pessoa</th>
+        <th>Descrição</th>
+        <th>Vencimento</th>
+        <th>Pagamento</th>
+        <th class="text-start">Valor</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let lancamento of lancamentos ">
+        <td class="col">{{ lancamento.id }}</td>
+        <td class="col text-nowrap 
+        {{ !lancamento.pessoa.ativo ? 'text-decoration-line-through' : '' }}"
+        >{{ lancamento.pessoa.nome }}</td>
+        <td class="col text-nowrap">{{ lancamento.descricao }}</td>
+        <td class="col">{{ lancamento.dataVencimento | date:'dd/MM/yyyy'}}</td>
+        <td class="col">{{ lancamento.dataPagamento | date:'dd/MM/yyyy'}}</td>
+        <td class="col text-nowrap text-start">{{ lancamento.valor | currency:'BRL'}}</td>
+        <td class="col-1">
+          <div class="btns-table d-flex flex-nowrap justify-content-center gap-1">
+            <button (click)="onEdit(lancamento.id, lancamento.pessoa.id, lancamento.categoria.id)" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
+            <button (click)="onDelete(lancamento.id)" class="btn btn-danger" tooltip="Remover"><i class="bi bi-trash-fill"></i></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!lancamentos">
+    <img style="width: 30px; height: 30px;" src="https://i.gifer.com/ZKZg.gif" alt="loading">
+  </div>
+
+  <button class="btn btn-success float-start mb-3" routerLink="/lancamentos/novo">Novo Lancamento</button>
+
+</div>
+
+<!-- <ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja remover o lançamento?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
+  </div>
+</ng-template> -->

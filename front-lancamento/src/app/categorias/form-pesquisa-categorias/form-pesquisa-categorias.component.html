@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Categorias</h2>
+
+  <form autocomplete="off" (ngSubmit)="pesquisar()">
+    <div class="form-group">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="nome">
+    </div>
+
+    <button class="btn btn-primary mt-2">Pesquisar</button>
+  </form>
+</div>
+
+<app-tabela-categorias [categorias]="categorias"></app-tabela-categorias>

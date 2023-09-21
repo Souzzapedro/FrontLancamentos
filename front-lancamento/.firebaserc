@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "frontlancamento": {
+      "hosting": {
+        "front-lancamento": [
+          "frontlancamento"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "frontlancamento"
+  }
+}

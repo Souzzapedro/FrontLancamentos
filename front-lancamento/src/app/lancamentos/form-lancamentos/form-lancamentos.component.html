@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>Novo lançamento</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+    <div class="mt-2">
+      <div class="inputCalendar d-flex">
+        <div class="form-group" style="margin-right: 24px;">
+          <label for="dataVencimento" class="form-label m-0" [ngClass]="aplicaCssErro('dataVencimento')">Vencimento</label>
+          <div>
+            <p-calendar dateFormat="dd/mm/yy" type="text" [inputStyle]="{ height: '38px' }" id="dataVencimento" formControlName="dataVencimento" [ngClass]="aplicaCssInputCalendar('dataVencimento')"></p-calendar>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dataPagamento" class="form-label m-0" [ngClass]="aplicaCssErro('dataPagamento')">Pagamento</label>
+          <div>
+            <p-calendar dateFormat="dd/mm/yy" type="text" [inputStyle]="{ height: '38px' }" id="dataPagamento" formControlName="dataPagamento" [ngClass]="aplicaCssInputCalendar('dataPagamento')"></p-calendar>
+          </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="form-group">
+        <label for="descricao" class="form-label m-0" [ngClass]="aplicaCssErro('descricao')">Descricao</label>
+        <input type="text" class="form-control" id="descricao" formControlName="descricao" [ngClass]="aplicaCssErro('descricao')">
+      </div>
+      <div class="form-group">
+        <label for="valor" class="form-label m-0" [ngClass]="aplicaCssErro('valor')">Valor</label>
+        <input class="form-control text-left" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" formControlName="valor" [ngClass]="aplicaCssErro('valor')">
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="form-group col">
+        <label class="form-label m-0" [ngClass]="aplicaCssErro('categoria')">Categoria</label>
+        <select class="form-select" formControlName="categoria" [ngClass]="aplicaCssErroIsInvalid('categoria')">
+          <option value="">Selecione</option>
+          <option *ngFor="let categoria of categorias" [ngValue]="categoria.id">{{ categoria.nome }}</option>
+        </select>
+      </div>
+      <div class="form-group col">
+        <label class="form-label m-0" [ngClass]="aplicaCssErro('pessoa')">Pessoa</label>
+        <select class="form-select" formControlName="pessoa" [ngClass]="aplicaCssErroIsInvalid('pessoa')">
+          <option value="">Selecione</option>
+          <option *ngFor="let pessoa of pessoas" [ngValue]="pessoa.id">{{ pessoa.nome }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group mt-2">
+      <label for="observacao" class="form-label m-0" [ngClass]="aplicaCssErro('observacao')">Observação</label>
+      <textarea class="form-control" id="observacao" rows="3" formControlName="observacao" [ngClass]="aplicaCssErro('observacao')"></textarea>
+    </div>
+
+    <div class="btns-form d-flex gap-2 mt-2">
+      <button *ngIf="isEditRoute" class="btn btn-primary">Salvar</button>
+      <button *ngIf="!isEditRoute" class="btn btn-info">Criar</button>
+      <button class="btn btn-link text-decoration-none" routerLink="/lancamentos">Voltar para a pesquisa</button>
+    </div>
+
+  </form>
+</div>

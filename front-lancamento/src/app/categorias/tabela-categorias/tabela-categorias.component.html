@@ -1,0 +1,37 @@
+<div class="container mt-3 table-responsive text-center">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th class="text-start">Nome</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let categoria of categorias">
+        <td class="col-md-1">{{ categoria.id }}</td>
+        <td class="col-md-9 text-start">{{ categoria.nome }}</td>
+        <td class="text-center col text-{{ categoria.ativo ? 'success' : 'danger' }} fw-bold">{{ categoria.ativo ? "ATIVO" : "INATIVO" }}</td>
+        <td class="col d-flex gap-2 justify-content-center">
+          <button [routerLink]="'/categorias/' + categoria.id + '/editar'" class="btn btn-primary mx-1" tooltip="Editar"><i class="bi bi-pencil-fill"></i></button>
+          <button (click)="atualizarStatus(categoria.id)" 
+          class="btn btn-{{ categoria.ativo ? 'danger' : 'success' }} text-nowrap col-8" 
+          tooltip="{{ categoria.ativo ? 'Desativar status da categoria' : 'Ativar status da categoria' }}"
+        >
+          {{ categoria.ativo ? "DESATIVAR" : "ATIVAR" }}
+        </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!categorias">
+    <img style="width: 30px; height: 30px;" src="https://i.gifer.com/ZKZg.gif" alt="loading">
+  </div>
+
+  <button class="float-start btn btn-outline-success" routerLink="/categorias/novo">Nova categoria</button>
+
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>Nova categoria</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nome" class="form-label" [ngClass]="aplicaCssErro('nome')">Nome</label>
+      <input type="text" class="form-control" id="nome" formControlName="nome" [ngClass]="aplicaCssErro('nome')">
+    </div>
+
+    <div class="btns-form d-flex gap-2 mt-2">
+      <button type="submit" *ngIf="isEditRoute" class="btn btn-primary">Salvar</button>
+      <button type="submit" *ngIf="!isEditRoute" class="btn btn-info">Novo</button>
+      <button class="btn btn-link text-decoration-none" routerLink="/categorias">Voltar para a pesquisa</button>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Lançamentos</h2>
+
+  <form autocomplete="off"  (ngSubmit)="pesquisar()">
+
+    <div class="form-group">
+      <label for="descricao" class="form-label">Descrição</label>
+      <input type="text" class="form-control" id="descricao" name="descricao" [(ngModel)]="descricao">
+    </div>
+    
+    <div class="mt-2">
+      <label for="vencimento" class="form-label m-0">Vencimento</label>
+        <div class="inputCalendar d-flex gap-2 align-items-center">
+          <p-calendar dateFormat="dd/mm/yy" type="text" [inputStyle]="{ height: '38px' }" name="dataVencimentoDe" [(ngModel)]="dataVencimentoDe"></p-calendar>
+          <span class="col-auto ">até</span>
+          <p-calendar dateFormat="dd/mm/yy" type="text" [inputStyle]="{ height: '38px' }" name="dataVencimentoAte" [(ngModel)]="dataVencimentoAte"></p-calendar>
+        </div>
+    </div>
+
+    <button class="btn btn-success mt-2">Pesquisar</button>
+  </form>
+</div>
+
+<app-tabela-lancamentos [lancamentos]="lancamentos"></app-tabela-lancamentos>

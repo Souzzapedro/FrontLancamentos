@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+.margin-nav {
+  margin-top: 10vh;
+}
+h1, label {
+  font-weight: 600;
+}
+
+p-calendar.ng-dirty.ng-invalid > .p-calendar > .p-inputtext:focus {
+  border-color: #e24c4c;
+  box-shadow: 0 0 0 0.2rem #f6ccd0;
+}

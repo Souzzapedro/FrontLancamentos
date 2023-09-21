@@ -1,0 +1,31 @@
+<div class="container mt-3 table-responsive text-center">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th class="text-start">Nome</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let arquivo of arquivos">
+        <td class="col-md-1">{{ arquivo.id }}</td>
+        <td class="col-md-6 text-start">{{ arquivo.nome }}</td>
+        <td class="col-md-2">
+          <a href="http://localhost:8080/arquivos/{{ arquivo.id }}/view" target="_blank" class="btn btn-primary" tooltip="Visualizar"><i class="bi bi-eye"></i></a>
+          <button (click)="onDownload(arquivo.id, arquivo.nome)" class="btn btn-primary mx-1" tooltip="Baixar"><i class="bi bi-download"></i></button>
+          <button (click)="onDelete(arquivo.id)" class="btn btn-danger" tooltip="Remover"><i class="bi bi-trash-fill"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!arquivos">
+    <img style="width: 30px; height: 30px;" src="https://i.gifer.com/ZKZg.gif" alt="loading">
+  </div>
+
+  <button class="float-start btn btn-outline-success" routerLink="/arquivos/novo">Nova arquivo</button>
+
+</div>
